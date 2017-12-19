@@ -40,13 +40,21 @@ var todoList = {
               completedTodos++;
           }
       }
-      //If everything's true, make everything false.
+      
+      
+      //Case 1: If everything's true, make everything false.
       if (completedTodos === totalTodos) {
           // Make everything false.
           for (var i = 0; i < totalTodos; i++) {
               this.todos[i].completed = false;
+              // Case: 2: Otherwise, make everything true
+          }
+      } else {
+          for (var i = 0; i < totalTodos; i++) {
+              this.todos[i].completed = true;
           }
       }
+      this.displayTodos();
   }
 };  
 
