@@ -44,6 +44,8 @@ var todoList = {
               completedTodos++;
           }
       }
+      
+      
       //Case 1: If everything's true, make everything false.
       if (completedTodos === totalTodos) {
           // Make everything false.
