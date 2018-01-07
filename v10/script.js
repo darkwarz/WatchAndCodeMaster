@@ -1,22 +1,22 @@
 var todoList = {  
      todos: [],
-   addTodo: function(todoText) { // addTodo('hi')
-    this.todos.push({
-    todoText: todoText,
-    completed: false
+    addTodo: function(todoText) { // addTodo('hi')
+      this.todos.push({
+      todoText: todoText,
+      completed: false
   });
   },
-  changeTodo: function(position, todoText) {
-    this.todos[position].todoText = todoText;
+    changeTodo: function(position, todoText) {
+      this.todos[position].todoText = todoText;
   },
-  deleteTodo: function(position) {
-    this.todos.splice(position,1);
+    deleteTodo: function(position) {
+      this.todos.splice(position,1);
   },
-  toggleCompleted: function(position) {
-    var todo = this.todos[position];
-    todo.completed = !todo.completed;
+    toggleCompleted: function(position) {
+      var todo = this.todos[position];
+      todo.completed = !todo.completed;
   },
-  toggleAll: function() {
+    toggleAll: function() {
       var totalTodos = this.todos.length;
       var completedTodos = 0;
       
@@ -82,8 +82,8 @@ var todoList = {
 };
 
 // displays in the DOM 
-var view = {
-  displayTodos: function() {
+    var view = {
+      displayTodos: function() {
        var todosUl = document.querySelector('ul');
        todosUl.innerHTML = '';
        for (var i = 0; i < todoList.todos.length; i++)  {
@@ -102,19 +102,28 @@ var view = {
          todosUl.appendChild(todoLi);
      }
    },  
-   createDeletedButton: function() {
+   createDeleteButton: function() {
      var deleteButton = document.createdElement('button');
-     deletedButton.textContent = 'Delete';
-     deletedButton.className = 'deleteButton';
-     return deletedButton;
-   }
+     deleteButton.textContent = 'Delete';
+     deleteButton.className = 'deleteButton';
+     return deleteButton;
+   },
+   setUpEventListeners: function() {
+    var todosUl = document.querySelector('ul');
+
+  todosUl.addEventListener('click', function(event) {
+    // Get the element that was clicked on.
+    var elementClicked = event.target;
+    
+    // Check if elementclicked is a delete button.
+    if (elementClicked.className === 'deleteButton') {
+      handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+    }
+});
+}
 };
 
-var todosUl = document.querySelector('ul');
-
-todosUl.addEventListener('click', function(event) {
-  console.log(event.target.parentNode.id);
-});
+view.setUpEventListeners();
 
 // old Code for view todo in Console
 
