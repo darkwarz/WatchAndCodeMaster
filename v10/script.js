@@ -101,8 +101,20 @@ var view = {
          todoLi.textContent = todoTextWithCompletion;
          todosUl.appendChild(todoLi);
      }
-   }  
+   },  
+   createDeletedButton: function() {
+     var deleteButton = document.createdElement('button');
+     deletedButton.textContent = 'Delete';
+     deletedButton.className = 'deleteButton';
+     return deletedButton;
+   }
 };
+
+var todosUl = document.querySelector('ul');
+
+todosUl.addEventListener('click', function(event) {
+  console.log(event.target.parentNode.id);
+});
 
 // old Code for view todo in Console
 
